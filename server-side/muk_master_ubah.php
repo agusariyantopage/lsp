@@ -2,28 +2,22 @@
 include "../koneksi.php";
 include "../function.php";
 $id = $_POST['id'];
-$kolom = get_single_data($koneksi, "skema", "id_skema", $id);
+$kolom = get_single_data($koneksi, "muk_master", "id_muk_master", $id);
+$paramater="WHERE id_skema=".$kolom['id_skema'];
 ?>
 
-<form method="post" enctype="multipart/form-data" action="aksi/skema.php">
+<form method="post" enctype="multipart/form-data" action="aksi/muk_master.php">
     <input type="hidden" name="aksi" value="ubah">
-    <input type="hidden" name="id_skema" value="<?= $kolom['id_skema']; ?>">
-    
+    <input type="hidden" name="id_muk_master" value="<?= $kolom['id_muk_master']; ?>">
     <div>
-        <label for="mode_skema">Mode Skema</label>
-        <input type="text" name="mode_skema" class="form-control" value="<?= $kolom['mode_skema']; ?>" required>
+        <label for="id_skema">Skema</label>
+        <select name="id_skema" class="form-control" required disabled>            
+            <?= call_option_selected($koneksi, "skema", "id_skema", "id_skema", "nama_skema",$kolom['id_skema']); ?>
+        </select>
     </div>
     <div>
-        <label for="nama_skema">Nama Skema</label>
-        <textarea name="nama_skema" class="form-control" rows="3" required><?= $kolom['nama_skema']; ?></textarea>        
-    </div>
-    <div>
-        <label for="kode_skema">Kode Skema</label>
-        <input type="text" name="kode_skema" class="form-control" value="<?= $kolom['kode_skema']; ?>" required>
-    </div>
-    <div>
-        <label for="jenis_skema">Jenis Skema</label>
-        <input type="text" name="jenis_skema" class="form-control" value="<?= $kolom['jenis_skema']; ?>" required>
+        <label for="deskripsi">Deskripsi</label>
+        <textarea name="deskripsi" class="form-control" rows="3" required><?= $kolom['deskripsi']; ?></textarea>
     </div>
     <div>
         <label for="tanggal_penetapan">Tanggal Penetapan</label>

@@ -5,12 +5,12 @@
      <div class="container-fluid">
        <div class="row mb-2">
          <div class="col-sm-6">
-           <h1 class="m-0">Skema</h1>
+           <h1 class="m-0">Komponen MUK</h1>
          </div><!-- /.col -->
          <div class="col-sm-6">
            <ol class="breadcrumb float-sm-right">
-             <li class="breadcrumb-item"><a href="#">Data LSP</a></li>
-             <li class="breadcrumb-item active"> Skema</li>
+             <li class="breadcrumb-item"><a href="#">Perangkat Uji</a></li>
+             <li class="breadcrumb-item active"> Komponen MUK</li>
 
            </ol>
          </div><!-- /.col -->
@@ -25,40 +25,40 @@
 
        <div class="card">
          <div class="card-header">
-           <h3>Data Skema</h3>
+           <h3>Data Komponen MUK (Materi Uji Kompetensi)</h3>
          </div>
          <div class="card-body">
-           <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModal">
-             <i class="fas fa-plus"></i> Tambah</button>
+          
            <table id="example1" class="table table-sm table-bordered table-striped">
              <!-- Kepala Tabel -->
              <thead>
                <tr>
                  <td>ID</td>
-                 <td>Kode Skema</td>
-                 <td>Jenis Skema</td>
-                 <td>Nama Skema</td>
+                 <td>Master MUK</td>
+                 <td>Kode MUK</td>
+                 <td>Judul MUK</td>
+                 <td>Elemen</td>                 
                  <td>Aksi</td>
                </tr>
              </thead>
              <!-- Isi Tabel -->
              <?php
-              $sql = "SELECT * from skema WHERE dihapus_pada IS NULL";
+              $sql = "SELECT muk.*,deskripsi FROM muk,muk_master WHERE muk.id_muk_master=muk_master.id_muk_master AND muk.dihapus_pada IS NULL";
               $query = mysqli_query($koneksi, $sql);
               while ($kolom = mysqli_fetch_array($query)) {
               ?>
                <tr>
-                 <td><?= $kolom['id_skema']; ?></td>
-                 <td><?= $kolom['kode_skema']; ?></td>
-                 <td><?= $kolom['jenis_skema']; ?></td>
-                 <td><?= $kolom['nama_skema']; ?></td>
-                 <td>[                   
-                   <a title="Edit Skema" href="index.php?p=skema-ubah&id=<?= $kolom['id_skema']; ?>"><i class="fas fa-search"></i></a>
-                    ] [  
-                   <a data-target='#hapusModal' data-toggle='modal' class='text-dark hapusModal' title='Hapus Skema' data-id='<?= $kolom['id_skema']; ?>' href='#'><i class="fas fa-trash text-info"></i></a> ]
-                 </td>
+                 <td><?= $kolom['id_muk']; ?></td>
+                 <td><?= $kolom['deskripsi']; ?></td>
+                 <td><?= $kolom['kode_muk']; ?></td>
+                 <td><?= $kolom['nama_muk']; ?></td>
+                 <td><?= get_jumlah_data($koneksi,'muk','id_muk_master',$kolom['id_muk_master']) ?></td>
                  
-                                    
+                 <td>
+                   [ <a data-target='#setupElemenModal' data-toggle='modal' class='text-dark setupElemenModal' title='Pengaturan Elemen' data-id='<?= $kolom['id_muk']; ?>' href='#'><i class="fas fa-cog text-info"></i></a> ]
+                   [ <a data-target='#editModal' data-toggle='modal' class='text-dark editModal' title='Ubah Master Materi Uji Kompetensi' data-id='<?= $kolom['id_muk']; ?>' href='#'><i class="fas fa-edit text-info"></i></a> ]
+                   [ <a data-target='#hapusModal' data-toggle='modal' class='text-dark hapusModal' title='Hapus Master Materi Uji Kompetensi' data-id='<?= $kolom['id_muk']; ?>' href='#'><i class="fas fa-trash text-info"></i></a> ]
+                 </td>
                </tr>
 
              <?php
@@ -79,30 +79,25 @@
 
  <!-- Modal Untuk Tambah skema -->
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
+   <div class="modal-dialog modal-lg">
      <div class="modal-content">
        <div class="modal-header">
-         <h5 class="modal-title" id="editModalLabel">Tambah Skema</h5>
+         <h5 class="modal-title" id="editModalLabel">Tambah Master Materi Uji Kompetensi</h5>
          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
-         <form method="post" enctype="multipart/form-data" action="aksi/skema.php">
+         <form method="post" enctype="multipart/form-data" action="aksi/muk_master.php">
            <input type="hidden" name="aksi" value="tambah">
            <div>
-             <label for="mode_skema">Mode Skema</label>
-             <input type="text" name="mode_skema" class="form-control" required>
+             <label for="id_skema">Skema</label>
+             <select name="id_skema" class="form-control" required>
+               <option value="">-- Pilih Skema --</option>
+               <?= call_option($koneksi, "skema", "id_skema", "id_skema", "nama_skema"); ?>
+             </select>
            </div>
            <div>
-             <label for="nama_skema">Nama Skema</label>
-             <input type="text" name="nama_skema" class="form-control" required>
-           </div>
-           <div>
-             <label for="kode_skema">Kode Skema</label>
-             <input type="text" name="kode_skema" class="form-control" required>
-           </div>
-           <div>
-             <label for="jenis_skema">Jenis Skema</label>
-             <input type="text" name="jenis_skema" class="form-control" required>
+             <label for="deskripsi">Deskripsi</label>
+             <textarea name="deskripsi" class="form-control" rows="3" required></textarea>
            </div>
            <div>
              <label for="tanggal_penetapan">Tanggal Penetapan</label>
@@ -133,11 +128,11 @@
    <div class="modal-dialog modal-md">
      <div class="modal-content">
        <div class="modal-header">
-         <h5 class="modal-title" id="editModalLabel">Konfirmasi Hapus Data Skema</h5>
+         <h5 class="modal-title" id="editModalLabel">Konfirmasi Hapus Data Materi Uji Kompetensi</h5>
          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
-         <div class="isi-skema-hapus"></div>
+         <div class="isi-hapus"></div>
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -150,14 +145,32 @@
 
  <!-- Modal Edit -->
  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
+   <div class="modal-dialog modal-lg">
      <div class="modal-content">
        <div class="modal-header">
-         <h5 class="modal-title" id="editModalLabel">Ubah skema</h5>
+         <h5 class="modal-title" id="editModalLabel">Ubah Materi Uji Kompetensi</h5>
          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
-         <div class="isi-skema-ubah"></div>
+         <div class="isi-ubah"></div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <!-- Modal Tambah Perangkat Uji Kompetensi -->
+ <div class="modal fade" id="setupElemenModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="editModalLabel">Pengatuan Elemen Materi Uji Kompetensi</h5>
+         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <div class="isi-setup"></div>
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

@@ -52,6 +52,15 @@ function get_single_data($koneksi,$nama_tabel,$kolom_kunci,$nilai_kunci)
     return $data;
 }
 
+// Fungsi  Get Jumlah Data (Menampilkan Jumlah Data Dari Hasil Query)
+function get_jumlah_data($koneksi,$nama_tabel,$kolom_kunci,$nilai_kunci)
+{
+    $sql = "SELECT * FROM " . $nama_tabel . " WHERE " . $kolom_kunci ."=".$nilai_kunci;
+    $query = mysqli_query($koneksi, $sql);
+    $data = mysqli_num_rows($query);
+    return $data;
+}
+
 
 function pesan_transaksi($koneksi)
     {

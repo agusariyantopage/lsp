@@ -2,20 +2,16 @@
 include "../koneksi.php";
 include "../function.php";
 $id = $_POST['id'];
-$kolom = get_single_data($koneksi, "skema_unit", "id_skema_unit", $id);
 $data_terkait=0;
-$data_terkait_elemen=get_jumlah_data($koneksi, "skema_elemen", "id_skema_unit",$id);
-$data_terkait=$data_terkait_elemen;
 ?>
 
-<form action="aksi/skema.php" method='post'>
-    <input type="hidden" name="aksi" value="hapus-unit">
-    <input type="hidden" name="id_skema_unit" value="<?= $id; ?>">
-    <input type="hidden" name="id_skema" value="<?= $kolom['id_skema']; ?>">
+<form action="aksi/asesor.php" method='post'>
+    <input type="hidden" name="aksi" value="hapus">
+    <input type="hidden" name="id_asesor" value="<?= $id; ?>">
     <label for="">Hasil Pengecekan Data Terkait</label>
     <table class="table" style="width:100%;">
         <tr>
-            <td>Data Elemen Kompetensi</td>
+            <td>Data Jadwal Ujian</td>
             <td><?= number_format($data_terkait); ?> Data</td>
         </tr>
         

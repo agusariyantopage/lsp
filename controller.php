@@ -8,7 +8,7 @@
 
     // (START) Menu Master Data
     else if($_GET['p']=='skema'){
-        $title  =$APP_TITLE." ".$APP_VERSION." | Skema Sertifikasi";
+        $title  =$APP_TITLE." ".$APP_VERSION." | Data Skema Sertifikasi";
         $konten="konten/skema.php";
         $konten_js="konten/js/skema.php";
     }
@@ -17,8 +17,41 @@
         $konten="konten/skema-ubah.php";  
         $konten_js="konten/js/skema_ubah.php";      
     }
+    else if($_GET['p']=='skema-rincian'){
+        $title  =$APP_TITLE." ".$APP_VERSION." | Rincian Elemen Skema Sertifikasi";
+        $konten="konten/skema-rincian.php";  
+        $konten_js="konten/js/skema_rincian.php";      
+    }
+    else if($_GET['p']=='tuk'){
+        $title  =$APP_TITLE." ".$APP_VERSION." | Data Tempat Uji Kompetensi";
+        $konten="konten/tuk.php";
+        $konten_js="konten/js/tuk.php";
+    }
+    else if($_GET['p']=='asesor'){
+        $title  =$APP_TITLE." ".$APP_VERSION." | Data Asesor";
+        $konten="konten/asesor.php";
+        $konten_js="konten/js/asesor.php";
+    }
+    else if($_GET['p']=='sdm'){
+        $title  =$APP_TITLE." ".$APP_VERSION." | Data Sumber Daya Manusia";
+        $konten="konten/sdm.php";
+        $konten_js="konten/js/sdm.php";
+    }
     
     // (END) Menu Master Data
+
+    // (START) Menu Perangkat Uji
+    else if($_GET['p']=='master-muk'){
+        $title  =$APP_TITLE." ".$APP_VERSION." | Data Master Materi Uji Kompetensi";
+        $konten="konten/master-muk.php";
+        $konten_js="konten/js/master_muk.php";
+    }    
+    else if($_GET['p']=='muk'){
+        $title  =$APP_TITLE." ".$APP_VERSION." | Komponen Materi Uji Kompetensi";
+        $konten="konten/muk.php";
+        $konten_js="konten/js/muk.php";
+    }    
+    // (END) Menu Perangkat Uji
 
     else if($_GET['p']=='user'){
         $title  =$APP_TITLE." ".$APP_VERSION." | User";

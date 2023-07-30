@@ -91,7 +91,7 @@ date_default_timezone_set('Asia/Singapore');
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #367fa9">
       <!-- Brand Logo -->
       <a href="index.php" class="brand-link">
         <img src="<?= $APP_LOGO; ?>" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">

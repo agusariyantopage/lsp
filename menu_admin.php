@@ -1,6 +1,6 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-table"></i>
               <p>
                 Data LSP
                 <i class="fas fa-angle-left right"></i>
@@ -32,6 +32,37 @@
                   <p>SDM</p>
                 </a>
               </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-clipboard"></i>
+              <p>
+                Perangkat Uji
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $BASE_URL; ?>/master-muk" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Master MUK</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="<?= $BASE_URL; ?>/muk" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Komponen MUK</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Formulir</p>
+                </a>
+              </li>              
+              
             </ul>
           </li>
           

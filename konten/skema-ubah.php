@@ -16,7 +16,7 @@
                      <ol class="breadcrumb float-sm-right">
                          <li class="breadcrumb-item"><a href="#">Data LSP</a></li>
                          <li class="breadcrumb-item"><a href="<?= $BASE_URL; ?>/skema">Skema</a></li>
-                         <li class="breadcrumb-item active">Ubah</li>
+                         <li class="breadcrumb-item active">Ubah ID [<?= $kolom['id_skema']; ?>]</li>
 
                      </ol>
                  </div><!-- /.col -->
@@ -66,7 +66,7 @@
                              </select>
                          </div>
 
-                         <button type="submit" class="btn btn-success btn-block mt-2"><i class="fas fa-save"></i> Simpan Perubahan</button>
+                         <button type="submit" class="btn btn-info btn-block mt-2"><i class="fas fa-save"></i> Simpan Perubahan</button>
                      </form>
                  </div>
              </div>
@@ -77,7 +77,7 @@
                  </div>
                  <div class="card-body">
 
-                     <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#tambahModal">
+                     <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#tambahModal">
                          <i class="fas fa-plus"></i> Tambah</button>
                      <table id="finditem" class="table table-sm table-bordered table-striped">
                          <!-- Kepala Tabel -->
@@ -101,9 +101,8 @@
                                  <td><?= $kolom['kode_unit']; ?></td>
                                  <td><?= $kolom['judul_unit']; ?></td>                                 
                                  <td>
-                                     <button type="button" class="btn btn-link editModal" data-toggle="modal" title="Ubah skema" data-target="#editModal" data-id="<?= $kolom['id_skema_unit']; ?>"><i class="fas fa-edit"></i></button>
-                                     <button type="button" class="btn btn-link hapusModal" title="Hapus skema" data-toggle="modal" data-target="#hapusModal" data-id="<?= $kolom['id_skema_unit']; ?>"><i class="fas fa-trash"></i></button>
-                                    
+                                     [ <a data-target='#editModal' data-toggle='modal' class='text-dark editModal' title='Ubah Unit' data-id='<?= $kolom['id_skema_unit']; ?>' href='#'><i class="fas fa-edit text-info"></i></a> ] 
+                                     [ <a data-target='#hapusModal' data-toggle='modal' class='text-dark hapusModal' title='Hapus Unit' data-id='<?= $kolom['id_skema_unit']; ?>' href='#'><i class="fas fa-trash text-info"></i></a> ]
                                  </td>
                              </tr>
 
@@ -111,6 +110,7 @@
                             }
                             ?>
                      </table>
+                     <a href="index.php?p=skema-rincian&id=<?= $id; ?>"><button type="button" class="btn btn-block btn-info mt-1"><i class="fas fa-file"></i> Kelola Elemen Kompetensi & Kriteria Unjuk Kerja</button></a>
                  </div>
              </div>
 
