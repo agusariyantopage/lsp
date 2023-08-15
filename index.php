@@ -159,7 +159,7 @@ date_default_timezone_set('Asia/Singapore');
     include $konten; ?>
 
     <footer class="main-footer">
-      <strong>Copyright &copy; 2021 <a href="https://backtoskull.wordpress.com">Agus Ariyanto</a>.</strong>
+      <strong>Copyright &copy; 2023 <a href="https://backtoskull.wordpress.com">Agus Ariyanto</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
         <b>Version</b> 1.0

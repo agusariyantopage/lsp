@@ -37,7 +37,7 @@
                  <td>Master MUK</td>
                  <td>Kode MUK</td>
                  <td>Judul MUK</td>
-                 <td>Elemen</td>                 
+                 <td>Jml Unit</td>                 
                  <td>Aksi</td>
                </tr>
              </thead>
@@ -52,7 +52,7 @@
                  <td><?= $kolom['deskripsi']; ?></td>
                  <td><?= $kolom['kode_muk']; ?></td>
                  <td><?= $kolom['nama_muk']; ?></td>
-                 <td><?= get_jumlah_data($koneksi,'muk','id_muk_master',$kolom['id_muk_master']) ?></td>
+                 <td align="center"><?= get_jumlah_data($koneksi,'muk_unit','id_muk',$kolom['id_muk']) ?></td>
                  
                  <td>
                    [ <a data-target='#setupElemenModal' data-toggle='modal' class='text-dark setupElemenModal' title='Pengaturan Elemen' data-id='<?= $kolom['id_muk']; ?>' href='#'><i class="fas fa-cog text-info"></i></a> ]
@@ -166,7 +166,7 @@
    <div class="modal-dialog modal-lg">
      <div class="modal-content">
        <div class="modal-header">
-         <h5 class="modal-title" id="editModalLabel">Pengatuan Elemen Materi Uji Kompetensi</h5>
+         <h5 class="modal-title" id="editModalLabel">Pengaturan Elemen Materi Uji Kompetensi</h5>
          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">

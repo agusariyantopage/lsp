@@ -65,6 +65,43 @@
               
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-award"></i>
+              <p>
+                Sertifikasi
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $BASE_URL; ?>/registrasi-asesmen" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrasi</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="<?= $BASE_URL; ?>/pra-asesmen" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pra Asessment</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="<?= $BASE_URL; ?>/asesmen" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Asessment</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="<?= $BASE_URL; ?>/pasca-asesmen" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pasca Assesment</p>
+                </a>
+              </li>              
+              
+            </ul>
+          </li>
           
           <li class="nav-item">
             <a href="<?= $BASE_URL; ?>/user" class="nav-link">

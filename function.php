@@ -51,11 +51,19 @@ function get_single_data($koneksi,$nama_tabel,$kolom_kunci,$nilai_kunci)
     $data = mysqli_fetch_array($query);
     return $data;
 }
+// Fungsi  Get Last Data
+function get_last_data($koneksi,$nama_tabel,$order_by)
+{
+    $sql = "SELECT * FROM " . $nama_tabel . " ORDER BY ".$order_by." DESC LIMIT 1";
+    $query = mysqli_query($koneksi, $sql);
+    $data = mysqli_fetch_array($query);
+    return $data;
+}
 
 // Fungsi  Get Jumlah Data (Menampilkan Jumlah Data Dari Hasil Query)
 function get_jumlah_data($koneksi,$nama_tabel,$kolom_kunci,$nilai_kunci)
 {
-    $sql = "SELECT * FROM " . $nama_tabel . " WHERE " . $kolom_kunci ."=".$nilai_kunci;
+    $sql = "SELECT * FROM " . $nama_tabel . " WHERE dihapus_pada IS NULL AND " . $kolom_kunci ."=".$nilai_kunci;
     $query = mysqli_query($koneksi, $sql);
     $data = mysqli_num_rows($query);
     return $data;
